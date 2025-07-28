@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microweld - HomePage</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/Micrologo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <!-- Background Video -->
+        <!-- <video class="bg-video" autoplay muted loop playsinline>
+            <source src="./images/ban1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video> -->
+    
+        <!-- Navigation Bar -->
+        <nav>
+    <div class="logo">Micro Weld and <span>Cutting Tools</span></div>
+    <button class="navbar-toggle"><i class="fas fa-bars"></i></button>
+    <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT US</a></li>
+        <li class="dropdown">
+            <a href="#products">PRODUCTS <i class="fas fa-caret-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="cutting-wheel.html">Cutting Wheel</a></li>
+                <li><a href="welding-electrode.html">Welding Electrode</a></li>
+                <li><a href="power-tools.html">Power Tools</a></li>
+                <li><a href="marble-blade.html">Marble Blade</a></li>
+                <li><a href="tct-saw-blade.html">TCT Saw Blade</a></li>
+                <li><a href="cleaning-tools.html">Cleaning Tools</a></li>
+                <li><a href="cordless-tools.html">Cordless Tools</a></li>
+            </ul>
+        </li>
+        <!-- <li><a href="#services">CERTIFICATIONS</a></li> -->
+        <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+</nav>
+    
+       
+    </header>
+    
+<style>
+/* ===== Core Fixes ===== */
+html {
+  width: 100%;
+  /* overflow-x: hidden; */
+}
+
+body {
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ===== Animation Fixes ===== */
+[data-aos] {
+  transition-property: transform, opacity !important;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* Initial states for animations */
+[data-aos="fade-left"] {
+  transform: translateX(100px) !important;
+  opacity: 0 !important;
+}
+
+[data-aos="fade-right"] {
+  transform: translateX(-100px) !important;
+  opacity: 0 !important;
+}
+
+[data-aos="fade-up"] {
+  transform: translateY(100px) !important;
+  opacity: 0 !important;
+}
+
+[data-aos="fade-down"] {
+  transform: translateY(-100px) !important;
+  opacity: 0 !important;
+}
+
+/* Animated state */
+[data-aos].aos-animate {
+  transform: translate(0, 0) !important;
+  opacity: 1 !important;
+}
+
+/* ===== Navbar Fix ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Adjust content below fixed navbar */
+header {
+  padding-top: 70px;
+  /* height: calc(100vh - 70px); */
+}
+
+/* ===== Mobile Specific ===== */
+@media (max-width: 768px) {
+  /* Prevent any potential overflow */
+  section {
+    width: 100vw;
+    overflow: hidden;
+  }
+  
+  /* Mobile menu adjustments */
+  nav ul {
+    top: 70px;
+    height: calc(100vh - 70px);
+  }
+}
+
+.close-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: #ff5c00;
+  cursor: pointer;
+  z-index: 1001;
+}
+.close-menu:hover {
+  transform: rotate(90deg);
+}
+
+
+
+
+/* ===== Vertical Dropdown Menu Styles ===== */
+nav ul li.dropdown {
+    position: relative;
+}
+
+nav ul li.dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+nav ul li.dropdown > a .fa-caret-down {
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 200px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dropdown-menu li {
+    padding: 8px 20px;
+    width: 100%;
+}
+
+.dropdown-menu li a {
+    color: #fff;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+}
+
+.dropdown-menu li:hover {
+    background-color: rgba(255, 92, 0, 0.2);
+}
+
+.dropdown-menu li a:hover {
+    color: #ff5c00;
+    padding-left: 5px;
+    transition: all 0.2s ease;
+}
+
+/* Show dropdown on hover */
+nav ul li.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+nav ul li.dropdown:hover > a .fa-caret-down {
+    transform: rotate(180deg);
+}
+
+/* ===== Enhanced Hamburger Menu ===== */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: 2px solid rgba(255, 92, 0, 0.5);
+  border-radius: 5px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggle:hover {
+  background: rgba(255, 92, 0, 0.1);
+  border-color: #ff5c00;
+}
+
+/* Mobile menu styles */
+@media (max-width: 768px) {
+  nav {
+    padding: 15px 20px;
+  }
+  
+  .navbar-toggle {
+    display: block;
+  }
+
+  /* nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #0d0d0d;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    transition: right 0.4s ease;
+    z-index: 999;
+    padding-top: 80px;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+  } */
+
+  nav ul {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: #0d0d0d;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transition: right 0.4s ease;
+  z-index: 999;
+  padding-top: 80px;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+
+  overflow-y: auto;         /* 🔥 Enables vertical scrolling */
+  scroll-behavior: smooth;
+}
+
+
+  nav ul.show {
+    right: 0;
+  }
+
+  /* nav ul li {
+    width: 100%;
+    padding: 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  nav ul li a {
+    font-size: 1.1rem;
+    padding: 15px 25px;
+    display: block;
+    transition: all 0.3s ease;
+  } */
+nav ul li {
+  width: 100%;
+  border-bottom: 1px solid #1a1a1a;
+}
+nav ul li a {
+  padding: 15px 25px;
+  display: block;
+}
+
+
+
+  nav ul li a:hover {
+    background: rgba(255, 92, 0, 0.1);
+    color: #ff5c00;
+    padding-left: 30px;
+  }
+
+  /* Dropdown styles */
+  .dropdown > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* .dropdown-menu {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: #1a1a1a;
+  }
+
+  .dropdown.active .dropdown-menu {
+    max-height: 500px;
+  } */
+
+  .dropdown-menu {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: #1a1a1a;
+  flex-direction: column;
+}
+.dropdown.active .dropdown-menu {
+  max-height: 1000px; /* enough height for all sub items */
+}
+
+
+  .dropdown-menu li {
+    padding-left: 40px;
+  }
+
+  /* Close button */
+  .close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: #ff5c00;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .close-menu:hover {
+    transform: rotate(90deg);
+  }
+}
+</style>
+
+
+
+
+<style>
+.product-hero {
+    position: relative;
+    height: 60vh;
+    background: linear-gradient(to right, #2f3b46, #26211f );
+
+    /* background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                url('images/bqn2.avif') center/cover no-repeat; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+
+</style>
+
+
+<!-- <body> -->
+    <!-- Product Hero Section -->
+    <section class="product-hero">
+        <div class="product-hero-content" data-aos="fade-up">
+            <h1>Premium <span>Cleaning Tools </span></h1>
+            <p>Engineered for precision and durability in industrial applications</p>
+            <a href="#product-contact" class="btn">Request Quote</a>
+        </div>
+    </section>
+
+    <!-- Product Intro Section -->
+    <section class="product-intro" id="product-intro">
+        <div class="product-intro-container">
+            <div class="product-intro-image" data-aos="fade-right">
+                <img src="images/cleaning-tool.webp" alt="Micro Weld Cutting Wheel" />
+            </div>
+            <div class="product-intro-text" data-aos="fade-left">
+                <h2>Industrial-Grade <span>Cleaning Tools </span></h2>
+                <p>We at Micro Weld And Cutting Tools provide a large selection of high-performance cleaning equipment to meet the needs of commercial cleaning, industrial hygiene, and everyday maintenance. Cleaning experts, facility managers, and janitorial teams throughout India rely on our products, which range from mops and brooms to industrial-grade wipers and scrubbing brushes.</p>
+
+                <p>As a reputable CLEANING TOOLS SUPPLIER IN INDIA, we provide long-lasting, user-friendly equipment that contributes to the upkeep of cleanliness in workplaces, public areas, warehouses, and factories. Micro Weld And Cutting Tools offers useful, reasonably priced, and efficient solutions for any kind of cleaning or heavy-duty industrial maintenance. We are also known as a specialized CLEANING TOOLS TRADER IN INDIA, providing prompt bulk shipping, personalized packaging, and reliable dealer assistance.</p>
+                
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Features Section -->
+    <section class="product-features">
+        <div class="features-container">
+            <h2 data-aos="fade-up">Product <span>Description</span></h2>
+            
+            <div class="features-content" data-aos="fade-up">
+                <p>The term "cleaning tools" describes equipment that is operated manually or semi-manually and is used to remove trash, dust, filth, and debris from surfaces and surroundings. These include professional-grade products like floor squeegees, scrubbers, and microfiber kits, as well as more conventional housekeeping gear like dustpans and brooms.</p>
+                
+                <p>Durability, ergonomic design, and simplicity of maintenance are all included in our whole line of cleaning tools at Micro Weld And Cutting Tools. As a dedicated CLEANING TOOLS TRADER IN INDIA, we make sure that our goods satisfy both user demands and industrial hygiene regulations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Usage Section -->
+    <section class="product-usage">
+        <div class="usage-container">
+            <div class="usage-text" data-aos="fade-right">
+                <h2>Bulk Purchase <span>& OEM Solutions</span></h2>
+                <p>Are you a store, facility manager, or cleaning contractor searching for a reliable source? Micro Weld And Cutting Tools, a reputable CLEANING TOOLS SUPPLIER IN INDIA, provides comprehensive business assistance.</p>
+                <ul style="list-style-type: none; padding-left: 10px;">
+                  <li>Bulk Order Pricing: Economical prices for institutional purchasers and distributors.</li>
+                  <li>Fast Dispatch: Dependable and prompt delivery throughout India.</li>
+                  <li>Dealer Support: Receive regular stock, marketing materials, and priority service.</li>
+                  <li>Variety of Products: Complete cleaning solutions for any sector.</li>
+                </ul>
+<br>
+                <p>For a consistent supply and knowledgeable advice, collaborate with Micro Weld And Cutting Tools, the leading CLEANING TOOLS TRADER IN INDIA.</p>
+                
+            </div>
+            <div class="usage-image" data-aos="fade-left">
+                <img src="images/cleaning-tool.webp" alt="Proper use of cutting wheel" />
+                <div class="safety-badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>OSHA Compliance</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product CTA Section -->
+    <section class="product-cta" id="product-contact">
+        <div class="cta-container">
+            <div class="cta-text" data-aos="fade-right">
+                <h2>Ready to Experience the <span>Difference?</span></h2>
+                <p>Contact our sales team today for pricing, bulk order discounts, or technical specifications. We offer customized solutions for industrial clients.</p>
+                <div class="cta-contacts">
+                    <div class="contact-method">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+91 9654100610</p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <p>sales@microweld.com</p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>New Delhi, India</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-form" data-aos="fade-left">
+                <form>
+                    <input type="text" placeholder="Your Name" required />
+                    <input type="email" placeholder="Your Email" required />
+                    <input type="tel" placeholder="Phone Number" />
+                    <select required>
+                        <option value="" disabled selected>Select Product Interest</option>
+                        <option value="cutting-wheel">Cleaning Tools </option>
+                        <option value="welding-electrode">Cleaning Tools s</option>
+                        <option value="power-tools">Cleaning Tools</option>
+                        <option value="other">Other Products</option>
+                    </select>
+                    <textarea placeholder="Your Message or Requirements" required></textarea>
+                    <button type="submit" class="btn">Request Information</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    
+
+  <hr>
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Company Info -->
+      <div class="footer-column">
+        <h1>Micro Weld and <span>Cutting Tools</span></h1> 
+        <br>
+        <!-- <img src="images/VastrumLogo.png" alt="Micro Weld Logo" class="footer-logo" /> -->
+        <p>
+          Established in 1995, Vastrum Transcom is known to be a constant and reliable supplier in the
+          petrochemical, energy, oil, chemical and naval industries. Since 1995, we offer our customers top
+          products at a high quality – very good price ratio.
+        </p>
+        
+      </div>
+  
+      <!-- Company Links -->
+      <div class="footer-column">
+        <h4>COMPANY</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Certifications</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Data protection</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+  
+      <!-- Product Links -->
+      <div class="footer-column">
+        <h4>PRODUCTS</h4>
+        <ul>
+            <!-- <li><a href="#">Round Bars</a></li> -->
+            <li><a href="#">Cutting Wheel</a></li>
+            <li><a href="#">Welding Electrode</a></li>
+            <li><a href="#">Power Tools</a></li>
+            <li><a href="#">Marble Blade</a></li>
+            <li><a href="#">Cleaning Tools</a></li>
+        </ul>
+          
+      </div>
+  
+      <!-- Contact Info -->
+      <div class="footer-column">
+        <h4>CONTACT INFO</h4>
+        <p><img src="./images/pin.png"/>Middle Portion Ground Floor, Plot No. 4, KH No. 206 & 207,
+        Ramesh Rana Complex, Lal Dora Blk-E, Village Rithala,<br>
+        New Delhi-110085,Delhi, India</p><br>
+        <!-- <p><i class="fas fa-envelope"></i> office@vastrum.ro</p> -->
+        <p><i class="fas fa-phone-alt"></i> +91 9654100610</p>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+        <p>&copy; 2025 ProImpact Marketing. All rights reserved.</p>
+    </div>
+      
+  </footer>
+  
+      
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+AOS.init({
+  duration: 800,
+  easing: 'ease-in-out',
+  once: true,
+  offset: 120
+});
+
+// Mobile menu functionality
+const toggleBtn = document.querySelector('.navbar-toggle');
+const navMenu = document.querySelector('nav ul');
+
+// ✅ Only add close button for mobile
+if (window.innerWidth <= 768) {
+  const closeBtn = document.createElement('div');
+  closeBtn.className = 'close-menu';
+  closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+//   navMenu.appendChild(closeBtn);
+
+  // Close menu on click
+  closeBtn.addEventListener('click', () => {
+    navMenu.classList.remove('show');
+    document.body.style.overflow = '';
+  });
+}
+
+// Toggle menu
+// toggleBtn.addEventListener('click', () => {
+//   navMenu.classList.add('show');
+//   document.body.style.overflow = 'hidden';
+// });
+toggleBtn.addEventListener('click', () => {
+  const isOpen = navMenu.classList.contains('show');
+  navMenu.classList.toggle('show');
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+});
+
+
+// Close when clicking outside
+document.addEventListener('click', (e) => {
+  if (window.innerWidth <= 768) {
+    if (!e.target.closest('nav') && navMenu.classList.contains('show')) {
+      navMenu.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  }
+});
+
+// Dropdown functionality
+document.querySelectorAll('.dropdown > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      const dropdown = this.parentElement;
+      const isActive = dropdown.classList.contains('active');
+
+      // Close all dropdowns first
+      document.querySelectorAll('.dropdown').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      // Open current if not already active
+      if (!isActive) {
+        dropdown.classList.add('active');
+      }
+    }
+  });
+});
+
+// Close menu when clicking regular links
+document.querySelectorAll('nav ul li:not(.dropdown) a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      navMenu.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  });
+});
+</script>
+
+
+
+    <!-- <script>
+        AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 120
+    });
+
+// Mobile menu functionality
+const toggleBtn = document.querySelector('.navbar-toggle');
+const navMenu = document.querySelector('nav ul');
+const closeBtn = document.createElement('div');
+closeBtn.className = 'close-menu';
+closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+navMenu.appendChild(closeBtn);
+
+// Toggle menu
+toggleBtn.addEventListener('click', () => {
+  navMenu.classList.add('show');
+  document.body.style.overflow = 'hidden';
+});
+
+// Close menu
+closeBtn.addEventListener('click', () => {
+  navMenu.classList.remove('show');
+  document.body.style.overflow = '';
+});
+
+// Close when clicking outside
+document.addEventListener('click', (e) => {
+  if (window.innerWidth <= 768) {
+    if (!e.target.closest('nav') && navMenu.classList.contains('show')) {
+      navMenu.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  }
+});
+
+// Dropdown functionality
+document.querySelectorAll('.dropdown > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      const dropdown = this.parentElement;
+      const isActive = dropdown.classList.contains('active');
+      
+      // Close all dropdowns first
+      document.querySelectorAll('.dropdown').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Open current if wasn't active
+      if (!isActive) {
+        dropdown.classList.add('active');
+      }
+    }
+  });
+});
+
+// Close menu when clicking regular links
+document.querySelectorAll('nav ul li:not(.dropdown) a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      navMenu.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+
+    </script> -->
+
+</body>
+
+</html>
+
+

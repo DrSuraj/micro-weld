@@ -1,0 +1,828 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microweld - HomePage</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/Micrologo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <!-- Background Video -->
+        <!-- <video class="bg-video" autoplay muted loop playsinline>
+            <source src="./images/ban1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video> -->
+    
+        <!-- Navigation Bar -->
+        <nav>
+    <div class="logo">Micro Weld and <span>Cutting Tools</span></div>
+    <button class="navbar-toggle"><i class="fas fa-bars"></i></button>
+    <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT US</a></li>
+        <li class="dropdown">
+            <a href="#products">PRODUCTS <i class="fas fa-caret-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="cutting-wheel.html">Cutting Wheel</a></li>
+                <li><a href="welding-electrode.html">Welding Electrode</a></li>
+                <li><a href="power-tools.html">Power Tools</a></li>
+                <li><a href="marble-blade.html">Marble Blade</a></li>
+                <li><a href="tct-saw-blade.html">TCT Saw Blade</a></li>
+                <li><a href="cleaning-tools.html">Cleaning Tools</a></li>
+                <li><a href="cordless-tools.html">Cordless Tools</a></li>
+            </ul>
+        </li>
+        <!-- <li><a href="#services">CERTIFICATIONS</a></li> -->
+        <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+</nav>
+    
+       
+    </header>
+    
+<style>
+/* ===== Core Fixes ===== */
+html {
+  width: 100%;
+  /* overflow-x: hidden; */
+}
+
+body {
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ===== Animation Fixes ===== */
+[data-aos] {
+  transition-property: transform, opacity !important;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* Initial states for animations */
+[data-aos="fade-left"] {
+  transform: translateX(100px) !important;
+  opacity: 0 !important;
+}
+
+[data-aos="fade-right"] {
+  transform: translateX(-100px) !important;
+  opacity: 0 !important;
+}
+
+[data-aos="fade-up"] {
+  transform: translateY(100px) !important;
+  opacity: 0 !important;
+}
+
+[data-aos="fade-down"] {
+  transform: translateY(-100px) !important;
+  opacity: 0 !important;
+}
+
+/* Animated state */
+[data-aos].aos-animate {
+  transform: translate(0, 0) !important;
+  opacity: 1 !important;
+}
+
+/* ===== Navbar Fix ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Adjust content below fixed navbar */
+header {
+  padding-top: 70px;
+  /* height: calc(100vh - 70px); */
+}
+
+/* ===== Mobile Specific ===== */
+@media (max-width: 768px) {
+  /* Prevent any potential overflow */
+  section {
+    width: 100vw;
+    overflow: hidden;
+  }
+  
+  /* Mobile menu adjustments */
+  nav ul {
+    top: 70px;
+    height: calc(100vh - 70px);
+  }
+}
+
+.close-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: #ff5c00;
+  cursor: pointer;
+  z-index: 1001;
+}
+.close-menu:hover {
+  transform: rotate(90deg);
+}
+
+
+
+
+/* ===== Vertical Dropdown Menu Styles ===== */
+nav ul li.dropdown {
+    position: relative;
+}
+
+nav ul li.dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+nav ul li.dropdown > a .fa-caret-down {
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 200px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dropdown-menu li {
+    padding: 8px 20px;
+    width: 100%;
+}
+
+.dropdown-menu li a {
+    color: #fff;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+}
+
+.dropdown-menu li:hover {
+    background-color: rgba(255, 92, 0, 0.2);
+}
+
+.dropdown-menu li a:hover {
+    color: #ff5c00;
+    padding-left: 5px;
+    transition: all 0.2s ease;
+}
+
+/* Show dropdown on hover */
+nav ul li.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+nav ul li.dropdown:hover > a .fa-caret-down {
+    transform: rotate(180deg);
+}
+
+/* ===== Enhanced Hamburger Menu ===== */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: 2px solid rgba(255, 92, 0, 0.5);
+  border-radius: 5px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggle:hover {
+  background: rgba(255, 92, 0, 0.1);
+  border-color: #ff5c00;
+}
+
+/* Mobile menu styles */
+@media (max-width: 768px) {
+  nav {
+    padding: 15px 20px;
+  }
+  
+  .navbar-toggle {
+    display: block;
+  }
+
+  /* nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #0d0d0d;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    transition: right 0.4s ease;
+    z-index: 999;
+    padding-top: 80px;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+  } */
+
+  nav ul {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: #0d0d0d;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transition: right 0.4s ease;
+  z-index: 999;
+  padding-top: 80px;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+
+  overflow-y: auto;         /* 🔥 Enables vertical scrolling */
+  scroll-behavior: smooth;
+}
+
+
+  nav ul.show {
+    right: 0;
+  }
+
+  /* nav ul li {
+    width: 100%;
+    padding: 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  nav ul li a {
+    font-size: 1.1rem;
+    padding: 15px 25px;
+    display: block;
+    transition: all 0.3s ease;
+  } */
+nav ul li {
+  width: 100%;
+  border-bottom: 1px solid #1a1a1a;
+}
+nav ul li a {
+  padding: 15px 25px;
+  display: block;
+}
+
+
+
+  nav ul li a:hover {
+    background: rgba(255, 92, 0, 0.1);
+    color: #ff5c00;
+    padding-left: 30px;
+  }
+
+  /* Dropdown styles */
+  .dropdown > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* .dropdown-menu {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: #1a1a1a;
+  }
+
+  .dropdown.active .dropdown-menu {
+    max-height: 500px;
+  } */
+
+  .dropdown-menu {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: #1a1a1a;
+  flex-direction: column;
+}
+.dropdown.active .dropdown-menu {
+  max-height: 1000px; /* enough height for all sub items */
+}
+
+
+  .dropdown-menu li {
+    padding-left: 40px;
+  }
+
+  /* Close button */
+  .close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: #ff5c00;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .close-menu:hover {
+    transform: rotate(90deg);
+  }
+}
+</style>
+
+
+
+
+
+<section class="hero-section">
+    <!-- Background Video -->
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="./images/ban1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Header Content -->
+    <div class="header-content">
+        <h1>Micro Weld and <span>Cutting Tools</span></h1>
+        <p>We are now among the top providers in the industry because <br>of our years of experience and solid reputation for quality,<br> dependability, and client satisfaction.</p>
+        <a href="#" class="btn">FIND OUT MORE</a>
+    </div>
+</section>
+
+
+
+ <!-- Build Section -->
+    <section class="build-section" id="about">
+        <div class="build-container">
+            <div class="build-images" data-aos="fade-right">
+                <img src="images/power-tool2.jpg" alt="Cutting Wheel" />
+                <img src="images/power-tool1.jpg" alt="Cutting Wheel" />
+                <img src="images/micro-2.jpg" alt="Cutting Wheel" />
+                <img src="images/power-tool3.jpeg" alt="Saw Blade" />
+            </div>
+
+            <div class="build-images" data-aos="fade-right">
+                <img src="images/micro-6-100-3.png" alt="Cutting Wheel" />
+                <img src="images/micro-arc-255-1-2p.png" alt="Cutting Wheel" />
+                <img src="images/micro-weld-6013.png" alt="Cutting Wheel" />
+                <img src="images/micro-mg-801.png" alt="Saw Blade" />
+            </div>
+
+             <!-- <div class="build-images" data-aos="fade-right">
+                <img src="images/XPT412-Marble-Cutter.-removebg-preview.png" alt="Cutting Wheel" />
+                <img src="images/welding electrode.jpg" alt="Cutting Wheel" />
+                <img src="images/Cordless_Tools-removebg-preview.png" alt="Cutting Wheel" />
+                <img src="images/1-removebg-preview.png" alt="Saw Blade" />
+            </div> -->
+
+            <!-- <div class="build-content" data-aos="fade-left">
+                <h2>We're Building <br />That You <span class="highlight"> the Best Solutions Need!</span></h2>
+                <p>We have established a solid reputation over the years because to our honesty, technological know-how, and customer-first philosophy. We consistently deliver the same dedication to quality and service, regardless of your size whether you are a small workshop owner or a major industrial customer.</p>
+                <ul>
+                    <li> Ultimate industrial-grade services</li>
+                    <li> Committed to top-tier client satisfaction</li>
+                    <li> Highly experienced engineering team</li>
+                    <li> Transparent pricing, no hidden costs</li>
+                    <li> Transparent pricing, no hidden costs</li>
+                </ul>
+                <button class="btn">More About Us</button>
+            </div> -->
+        </div>
+    </section>
+<!-- Services Section -->
+<section class="services-section" id="services">
+    <div class="container" data-aos="fade-up">
+        <h1 class="section-subtitle">OUR SERVICES</h1>
+        <h2 class="section-title">Where Every Product is Built to Last</h2>
+
+        <div class="services-grid">
+            <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+                <h3>Tool<br />Consultation</h3>
+                <div class="icon-box" style="background-image: url('images/consultant.png');"></div>
+            </div>
+            <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+                <h3>Custom Tool<br />Sourcing</h3>
+                <div class="icon-box" style="background-image: url('images/data-collection1.png');"></div>
+            </div>
+            <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+                <h3>Maintenance<br />& Repair</h3>
+                <div class="icon-box" style="background-image: url('images/optimizing1.png');"></div>
+            </div>
+            <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
+                <h3>Technical<br />Support</h3>
+                <div class="icon-box" style="background-image: url('images/technical1.png');"></div>
+            </div>
+        </div>
+    </div>
+</section>
+  
+    
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-text" data-aos="fade-left">
+                <h1>About Us</h1>
+                <h2>Micro Weld And Cutting Tools</h2>
+                <p>
+                    In the field of industrial equipment and consumables, Micro Weld And Cutting Tools is a reputable brand renowned for
+                    performance, quality, and dependability. We specialize in providing a wide range of top-notch products,
+                    including cutting wheels, welding electrodes, power tools, marble blades, TCT saw blades, cleaning tools,
+                    and cordless tools.
+                </p>
+                <p>
+                    Founded to meet the growing needs of the manufacturing, fabrication, and construction sectors, we have built
+                    a solid reputation through our integrity, technical expertise, and customer-first approach. Whether you are
+                    a small workshop or a major industrial client, you can expect the same level of commitment and service
+                    excellence from us.
+                </p>
+            </div>
+            <div class="about-image" data-aos="fade-right">
+                <!-- <img src="images/gears-cogwheels.avif" alt="Micro Weld Industrial Tools" /> -->
+                <img src="images/ban1.avif" alt="Micro Weld Industrial Tools" />
+            </div>
+            </div>
+    
+        <div class="about-highlights">
+            <div class="highlight-box" data-aos="zoom-in-up">
+                <img src="images/anniversary.png" alt="Experience Icon" />
+                <h3>Experience</h3>
+                <p>25+years of activity</p>
+            </div>
+            <div class="highlight-box" data-aos="zoom-in-up">
+                <img src="images/developers.png" alt="Team Icon" />
+                <h3>Team</h3>
+                <p>Professionals in the industry</p>
+            </div>
+            <div class="highlight-box" data-aos="zoom-in-up">
+                <img src="images/abstract.png" alt="Equipment Icon" />
+                <h3>State of the art</h3>
+                <p>Equipment</p>
+            </div>
+        </div>
+    </section>
+      
+    <section class="products-section" id="products">
+        <div class="products-heading">
+            <h2>OUR PRODUCTS</h2>
+            <div class="heading-line"></div>
+        </div>
+    
+        <div class="products-grid">
+            <!-- Product Card -->
+            <div class="product-card">
+                <img src="images/CUTTING WHEEL .jpg" alt="Product 1" />
+                <h3>CUTTING WHEEL</h3>
+                <div class="product-info">
+                    <h3>Cutting Wheel</h3>
+                    <p>Strong and quick-cutting discs that work well with steel and metal. produces accurate, clean cuts with little effort.
+                    </p>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="images/cutting electrode.avif" alt="Product 2"/>
+                <h3>Welding Electrode</h3>
+                <div class="product-info">
+                    <h3>Welding Electrode</h3>
+                    <p>Strong arc stability and low spatter.</p>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="images/worker-wearing-gloves-front-view.jpg" alt="Product 3"/>
+                <h3>Power Tools</h3>
+                <div class="product-info">
+                    <h3>Power tools</h3>
+                    <p>Industrial-grade durability and performance.</p>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="images/marble-blade1.jpg" alt="Product 4" />
+                <h3>Marble Blade</h3>
+                <div class="product-info">
+                    <h3>Marble Blade</h3>
+                    <p>Auto-darkening helmet for safety and comfort.</p>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="images/tct.jpg" alt="Product 5" />
+                <h3>TCT Saw Blade</h3>
+                <div class="product-info">
+                    <h3>TCT Saw Blade</h3>
+                    <p>Ideal for surface grinding and polishing.</p>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="images/clwaning tools.jpg" alt="Product 6" />
+                <h3>Cleaning tools</h3>
+                <div class="product-info">
+                    <h3>Safety Gloves</h3>
+                    <p>Heat-resistant gloves for industrial work.</p>
+                </div>
+            </div>
+    
+            <div class="product-card">
+                <img src="images/cordless tools.jpg" alt="Product 7" />
+                <h3>Cordless Tools</h3>
+                <div class="product-info">
+                    <h3>Cordless Tools</h3>
+                    <p>Rust and paint removal brush with steel bristles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+      
+      
+    <section class="contact-section" id="contact">
+        <div class="contact-container"data-aos="fade-left">
+            <!-- Left Contact Text -->
+            <div class="contact-text">
+                <!-- <h2>Contact Us</h2>
+                <p>Have questions or need a quote? Reach out — we're here to help!</p>
+                <ul>
+                    <li><i class="fas fa-phone-alt"></i> +91 9654100610</li>
+                    <li><i class="fas fa-envelope"></i> support@microweld.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Indore, India</li>
+                </ul> -->
+    
+                <div class="reach-us" data-aos="fade-left">
+                    <h3>Reach Us</h3>
+                    <p><strong>Micro Weld And Cutting Tools</strong></p>
+                    <p>Middle Portion Ground Floor, Plot No. 4, KH No. 206 & 207,<br>
+                        Ramesh Rana Complex, Lal Dora Blk-E, Village Rithala,<br>
+                        New Delhi-110085, Delhi, India</p>
+                    <p><a href="https://www.google.com/maps?q=Micro+Weld+And+Cutting+Tools,+Rithala,+New+Delhi"
+                            target="_blank">Get Directions</a></p>
+                    <p><strong>Manish Goyal (Owner)</strong></p>
+                    <p>Call: <a href="tel:09654100610">09654100610</a></p>
+                </div>
+            </div>
+    
+            <!-- Right Contact Form -->
+            <div class="contact-form" data-aos="fade-right">
+                <form>
+                    <input type="text" placeholder="Your Name" required />
+                    <input type="email" placeholder="Your Email" required />
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+      
+
+
+
+  <hr>
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Company Info -->
+      <div class="footer-column">
+        <h1>Micro Weld and <span>Cutting Tools</span></h1> 
+        <br>
+        <!-- <img src="images/VastrumLogo.png" alt="Micro Weld Logo" class="footer-logo" /> -->
+        <p>
+          Established in 1995, Vastrum Transcom is known to be a constant and reliable supplier in the
+          petrochemical, energy, oil, chemical and naval industries. Since 1995, we offer our customers top
+          products at a high quality – very good price ratio.
+        </p>
+        
+      </div>
+  
+      <!-- Company Links -->
+      <div class="footer-column">
+        <h4>COMPANY</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Certifications</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Data protection</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+  
+      <!-- Product Links -->
+      <div class="footer-column">
+        <h4>PRODUCTS</h4>
+        <ul>
+            <!-- <li><a href="#">Round Bars</a></li> -->
+            <li><a href="#">Cutting Wheel</a></li>
+            <li><a href="#">Welding Electrode</a></li>
+            <li><a href="#">Power Tools</a></li>
+            <li><a href="#">Marble Blade</a></li>
+            <li><a href="#">Cleaning Tools</a></li>
+        </ul>
+          
+      </div>
+  
+      <!-- Contact Info -->
+      <div class="footer-column">
+        <h4>CONTACT INFO</h4>
+        <p><img src="./images/pin.png"/>Middle Portion Ground Floor, Plot No. 4, KH No. 206 & 207,
+        Ramesh Rana Complex, Lal Dora Blk-E, Village Rithala,<br>
+        New Delhi-110085,Delhi, India</p><br>
+        <!-- <p><i class="fas fa-envelope"></i> office@vastrum.ro</p> -->
+        <p><i class="fas fa-phone-alt"></i> +91 9654100610</p>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+        <p>&copy; 2025 ProImpact Marketing. All rights reserved.</p>
+    </div>
+      
+  </footer>
+  
+      
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+AOS.init({
+  duration: 800,
+  easing: 'ease-in-out',
+  once: true,
+  offset: 120
+});
+
+// Mobile menu functionality
+const toggleBtn = document.querySelector('.navbar-toggle');
+const navMenu = document.querySelector('nav ul');
+
+// ✅ Only add close button for mobile
+if (window.innerWidth <= 768) {
+  const closeBtn = document.createElement('div');
+  closeBtn.className = 'close-menu';
+  closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+//   navMenu.appendChild(closeBtn);
+
+  // Close menu on click
+  closeBtn.addEventListener('click', () => {
+    navMenu.classList.remove('show');
+    document.body.style.overflow = '';
+  });
+}
+
+// Toggle menu
+// toggleBtn.addEventListener('click', () => {
+//   navMenu.classList.add('show');
+//   document.body.style.overflow = 'hidden';
+// });
+toggleBtn.addEventListener('click', () => {
+  const isOpen = navMenu.classList.contains('show');
+  navMenu.classList.toggle('show');
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+});
+
+
+// Close when clicking outside
+document.addEventListener('click', (e) => {
+  if (window.innerWidth <= 768) {
+    if (!e.target.closest('nav') && navMenu.classList.contains('show')) {
+      navMenu.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  }
+});
+
+// Dropdown functionality
+document.querySelectorAll('.dropdown > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      const dropdown = this.parentElement;
+      const isActive = dropdown.classList.contains('active');
+
+      // Close all dropdowns first
+      document.querySelectorAll('.dropdown').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      // Open current if not already active
+      if (!isActive) {
+        dropdown.classList.add('active');
+      }
+    }
+  });
+});
+
+// Close menu when clicking regular links
+document.querySelectorAll('nav ul li:not(.dropdown) a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      navMenu.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  });
+});
+</script>
+
+
+
+    <!-- <script>
+        AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 120
+    });
+
+// Mobile menu functionality
+const toggleBtn = document.querySelector('.navbar-toggle');
+const navMenu = document.querySelector('nav ul');
+const closeBtn = document.createElement('div');
+closeBtn.className = 'close-menu';
+closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+navMenu.appendChild(closeBtn);
+
+// Toggle menu
+toggleBtn.addEventListener('click', () => {
+  navMenu.classList.add('show');
+  document.body.style.overflow = 'hidden';
+});
+
+// Close menu
+closeBtn.addEventListener('click', () => {
+  navMenu.classList.remove('show');
+  document.body.style.overflow = '';
+});
+
+// Close when clicking outside
+document.addEventListener('click', (e) => {
+  if (window.innerWidth <= 768) {
+    if (!e.target.closest('nav') && navMenu.classList.contains('show')) {
+      navMenu.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  }
+});
+
+// Dropdown functionality
+document.querySelectorAll('.dropdown > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      const dropdown = this.parentElement;
+      const isActive = dropdown.classList.contains('active');
+      
+      // Close all dropdowns first
+      document.querySelectorAll('.dropdown').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Open current if wasn't active
+      if (!isActive) {
+        dropdown.classList.add('active');
+      }
+    }
+  });
+});
+
+// Close menu when clicking regular links
+document.querySelectorAll('nav ul li:not(.dropdown) a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      navMenu.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+
+    </script> -->
+
+</body>
+
+</html>
+
+
