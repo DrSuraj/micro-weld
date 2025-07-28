@@ -1413,7 +1413,7 @@ p img {
     position: relative;
     height: 60vh;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                url('images/worker-wearing-gloves-front-view.jpg') center/cover no-repeat;
+                url('images/worker-wearing-gloves-front-view.avif') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
